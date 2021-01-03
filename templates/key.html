@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block body %}
+  <h2>Enter Lunanode Key</h2>
+  <form action="" method=post>
+    <p>
+       Api Key:
+      <input type=text name=title value="{{ request.form.title }}">
+    <p>Key:
+    <p><input type=text name=key value="{{ request.form.key }}">
+    <p>
+      <input type=submit value="Create key">
+      <a href="{{ url_for('show_all') }}">Back to list</a>
+  </form>
+{% endblock %}
