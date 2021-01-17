@@ -8,10 +8,6 @@ app = Flask(__name__)
 app.config.from_pyfile('todo.cfg')
 db = SQLAlchemy(app)
 
-# find lunanode credentials
-with open(r"/home/centos/commands.txt") as hpass:
-    lines = hpass.readlines()
-api = LNDynamic(lines[0].rstrip('\n'), lines[1].rstrip('\n'))
 
 class Keys(db.Model):
     __tablename__ = 'keys'
@@ -73,8 +69,6 @@ def update_done():
     return redirect(url_for('show_all'))
 
 
-#@app.route('/images', methods=['GET'])
-#def images_done():
 @app.route('/keys', methods=['GET','POST'])
 def keys():
     if request.method == 'POST':
@@ -84,7 +78,7 @@ def keys():
             flash('Key is required', 'error')
         else:
             keys = Keys(request.form['api_key'], request.form['key'])
-            db.session.add(todo)
+            db.session.add(keys)
             db.session.commit()
             flash(u'keys items were successfully created')
             return redirect(url_for('show_all'))

@@ -5,7 +5,7 @@ networks:
     driver: bridge
 
 services:
-  todoapplication:
+  manage:
       hostname: todo
       build: .
       ports:
